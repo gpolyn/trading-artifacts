@@ -1,12 +1,13 @@
 version: '2'
 services:
   worker:
-    image: ubuntu
+    build: ./one
     volumes:
-      - results:/results
+      - 'myshare:/shared'
   reporting:
-    image: ubuntu
-    volumes_from:
-      - worker:ro
+    build: ./two
+    volumes:
+      - 'myshare:/shared'
 volumes:
-  results:
+  myshare:
+    driver: local
