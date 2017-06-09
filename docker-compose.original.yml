@@ -1,0 +1,12 @@
+version: '2'
+services:
+  one:
+    build: ./one
+    volumes:
+      - results:/results
+  two:
+    build: ./two
+    volumes_from:
+      - one
+volumes:
+  results:

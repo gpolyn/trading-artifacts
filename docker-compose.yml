@@ -1,0 +1,12 @@
+version: '2'
+services:
+  worker:
+    image: ubuntu
+    volumes:
+      - results:/results
+  reporting:
+    image: ubuntu
+    volumes_from:
+      - worker:ro
+volumes:
+  results:
